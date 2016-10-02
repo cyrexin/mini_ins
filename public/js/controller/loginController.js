@@ -9,6 +9,7 @@ angular.module('mini_ins')
                 .then(function(response) {
                     $window.localStorage.currentUser = JSON.stringify(response.data.user);
                     $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+                    console.log($rootScope.currentUser);
                 })
                 .catch(function(response) {
                     $scope.errorMessage = {};

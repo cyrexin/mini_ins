@@ -10,3 +10,8 @@ a {
   width: 315px;
   margin: 5% auto;
 }
+
+.view {
+  max-width: 600px;
+  margin: 5% auto;
+}

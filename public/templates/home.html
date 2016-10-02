@@ -2,9 +2,9 @@
 
     <div ng-if="isLoggedIn() && currentUser.email">
         <div class="row">
-            <div ng-repeat="photo in photos" class="col-lg-2 col-sm-3 col-xs-4">
-                <a href="#/p/{{photo.id}}">
-                    <img ng-src="{{photo.images.standard_resolution.url}}" class="thumbnail img-responsive">
+            <div ng-repeat="photo in photos" class="col-lg-3 col-sm-3 col-xs-4">
+                <a href="#/p/{{photo._id}}">
+                    <img ng-src="{{'/upload/' + photo.url}}" class="thumbnail img-responsive">
                 </a>
             </div>
         </div>

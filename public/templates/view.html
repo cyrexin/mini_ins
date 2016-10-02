@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="container">
 
-</body>
-</html>
+    <div class="view panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+
+                <div class="col-sm-12 col-xs-12">
+                    <img ng-src="{{photo.url}}" class="img-responsive">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="caption">
+                        <h5>{{photo.user.fullname}}</h5>
+                        <h6 class="text-muted"><i class="fa fa-clock-o" aria-hidden="true"></i> {{photo.timestamp | date:'short'}}</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row edit">
+                <div class="col-sm-12 col-xs-12">
+                    <div ng-show="currentUser._id && photo.user._id == currentUser._id">
+                        <div editable-text="photo.description" onaftersave="updateCaption()">{{ photo.description || "Add caption" }}</div>
+                    </div>
+                    <div ng-hide="currentUser._id && photo.user._id == currentUser._id">
+                        <div>{{ photo.description }}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

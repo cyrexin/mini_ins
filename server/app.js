@@ -38,17 +38,19 @@ mongoose.connect(config.db);
 var app = express();
 
 // view engine setup
+// app.engine('html', require('ejs').renderFile);
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(cors());
+
 
 app.use('/', routes);
 // app.use('/users', users);
@@ -86,6 +88,11 @@ function isAuthenticated(req, res, next) {
     next();
   })
 }
+
+app.get('/protected', isAuthenticated, function(req, res) {
+  // Prints currently signed-in user object
+  console.log(req.user);
+});
 
 app.post('/auth/login', function(req, res) {
   User.findOne({ email: req.body.email }, '+password', function(err, user) {
@@ -155,15 +162,48 @@ app.post('/upload', isAuthenticated, function(req, res) {
 
     var photo = new Photo({
       timestamp: Date.now(),
-      uploadBy: req.user.email,
+      uploadBy: req.user._id,
       url: req.file.filename
     });
     photo.save(function() {
-      
+
     });
 
     res.json({error_code:0, err_desc:null});
   })
+});
+
+app.get('/feed', isAuthenticated, function(req, res, next) {
+  var photos = mongoose.model('Photo');
+  photos
+      .find({
+        "uploadBy": req.user._id
+      })
+      .sort({"timestamp": -1})
+      .exec(function(err, p){
+        return res.end(JSON.stringify(p));
+      });
+});
+
+app.get('/photo/:id', function (req, res, next) {
+  var photo = mongoose.model('Photo');
+  photo.findById(req.params.id).lean().exec(function(err, p) {
+    var user  = mongoose.model('User');
+    user.findById(p.uploadBy).lean().exec(function(err, u) {
+      p['user'] = u;
+      return res.end(JSON.stringify(p));
+    });
+  });
+});
+
+app.post('/updateCaption', function(req, res) {
+  Photo.findOneAndUpdate({_id: req.body.id}, {
+    $set: {description: req.body.description}
+  }, {new: true}, function(err, photo) {
+    var doc = photo.toObject();
+    doc['status'] = 'ok';
+    return res.end(JSON.stringify(doc));
+  });
 });
 
 // catch 404 and forward to error handler
