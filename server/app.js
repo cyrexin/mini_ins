@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var config = require('./config');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+// var users = require('./routes/users');
 
 var bcrypt = require('bcryptjs');
 var cors = require('cors');
@@ -15,6 +15,7 @@ var jwt = require('jwt-simple');
 var moment = require('moment');
 var mongoose = require('mongoose');
 var request = require('request');
+var multer = require('multer');
 
 
 var User = mongoose.model('User', new mongoose.Schema({
@@ -22,6 +23,13 @@ var User = mongoose.model('User', new mongoose.Schema({
   password: { type: String, select: false },
   fullname: String,
   accessToken: String
+}));
+
+var Photo = mongoose.model('Photo', new mongoose.Schema({
+  url: String,
+  timestamp: String,
+  description: String,
+  uploadBy: String
 }));
 
 mongoose.connect(config.db);
@@ -122,6 +130,40 @@ app.post('/auth/reg', function(req, res) {
       });
     });
   });
+});
+
+// file upload, ref: https://code.ciphertrick.com/2015/12/07/file-upload-with-angularjs-and-nodejs/
+var storage = multer.diskStorage({ //multers disk storage settings
+  destination: function (req, file, cb) {
+    cb(null, 'public/upload')
+  },
+  filename: function (req, file, cb) {
+    var datetimestamp = Date.now();
+    cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1])
+  }
+});
+var upload = multer({ //multer settings
+  storage: storage
+}).single('file');
+/** API path that will upload the files */
+app.post('/upload', isAuthenticated, function(req, res) {
+  upload(req,res,function(err){
+    if(err){
+      res.json({error_code:1, err_desc:err});
+      return;
+    }
+
+    var photo = new Photo({
+      timestamp: Date.now(),
+      uploadBy: req.user.email,
+      url: req.file.filename
+    });
+    photo.save(function() {
+      
+    });
+
+    res.json({error_code:0, err_desc:null});
+  })
 });
 
 // catch 404 and forward to error handler

@@ -5,3 +5,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.center-form {
+  width: 315px;
+  margin: 5% auto;
+}
