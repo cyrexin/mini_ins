@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="mini_ins">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MinIns</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <a href="/" class="navbar-brand"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <li><a href="#/login">Log in</a></li>
+            <li><a href="#/signup">Sign up</a></li>
+            <li><a ng-click="logout()" href="">Logout</a></li>
+        </ul>
+    </div>
+</div>
+
+<div ng-view></div>
+
+<script src="/js/lib/angular.min.js"></script>
+<script src="/js/lib/angular-messages.min.js"></script>
+<script src="/js/lib/angular-route.min.js"></script>
+<script src="https://cdn.jsdelivr.net/satellizer/0.15.5/satellizer.min.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controller/homeController.js"></script>
+<script src="/js/controller/loginController.js"></script>
+<script src="/js/controller/navController.js"></script>
+<script src="/js/controller/regController.js"></script>
+<script src="/js/controller/viewController.js"></script>
+
+</body>
+</html>

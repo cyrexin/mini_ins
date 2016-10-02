@@ -1,0 +1,24 @@
+<div class="container">
+
+    <div ng-if="isLoggedIn() && currentUser.username">
+        <div class="row">
+            <div ng-repeat="photo in photos" class="col-lg-2 col-sm-3 col-xs-4">
+                <a href="#/p/{{photo.id}}">
+                    <img ng-src="{{photo.images.standard_resolution.url}}" class="thumbnail img-responsive">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="!isLoggedIn()">
+        <div class="jumbotron">
+            <h2><i class="fa fa-instagram" aria-hidden="true"></i> MiniIns</h2>
+            <p></p>
+            <p>
+                <a class="btn btn-lg btn-success" href="#/login"><i class="fa fa-user" aria-hidden="true"></i> Sign In</a>
+                <a class="btn btn-lg btn-primary" href="#/reg"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a>
+            </p>
+        </div>
+    </div>
+
+</div>
