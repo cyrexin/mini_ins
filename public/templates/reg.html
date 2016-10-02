@@ -14,7 +14,10 @@
                     <span class="ion-key form-control-feedback"></span>
                 </div>
 
-                <p class="text-center text-muted"><small>By clicking on Sign up, you agree to <a href="#">terms & conditions</a> and <a href="#">privacy policy</a></small></p>
+                <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.fullname.$invalid && signupForm.fullname.$dirty }">
+                    <input class="form-control input-lg" type="text" id="fullname" name="fullname" ng-model="fullname" placeholder="Your name" required>
+                    <span class="ion-at form-control-feedback"></span>
+                </div>
 
                 <button type="submit" class="btn btn-block btn-primary">Sign up</button>
                 <br/>

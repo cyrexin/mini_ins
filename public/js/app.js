@@ -22,6 +22,6 @@ angular.module('mini_ins', ['ngRoute', 'ngMessages', 'satellizer'])
             })
             .otherwise('/');
 
-        $authProvider.loginUrl = 'http://localhost:3000/auth/login';
-        $authProvider.signupUrl = 'http://localhost:3000/auth/reg';
+        $authProvider.loginUrl = '/auth/login';
+        $authProvider.signupUrl = '/auth/reg';
     });

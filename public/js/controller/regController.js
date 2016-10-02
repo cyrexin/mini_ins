@@ -7,7 +7,8 @@ angular.module('mini_ins')
         $scope.signup = function() {
             var user = {
                 email: $scope.email,
-                password: $scope.password
+                password: $scope.password,
+                fullname: $scope.fullname
             };
 
             // Satellizer

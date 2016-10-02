@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div ng-if="isLoggedIn() && currentUser.username">
+    <div ng-if="isLoggedIn() && currentUser.email">
         <div class="row">
             <div ng-repeat="photo in photos" class="col-lg-2 col-sm-3 col-xs-4">
                 <a href="#/p/{{photo.id}}">
