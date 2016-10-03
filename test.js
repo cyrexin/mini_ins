@@ -76,16 +76,5 @@ describe('Server testing', function () {
                     done();
                 });
         });
-        it('should return error tyring to get the feed without login', function(done) {
-            request(url)
-                .get('/feed')
-                .end(function(err, res) {
-                    if (err) {
-                        throw err;
-                    }
-                    res.should.have.property('status', 400);
-                    done();
-                });
-        });
     });
 });

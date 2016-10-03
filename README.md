@@ -22,6 +22,17 @@
 $ npm install
 ```
 
+##### Mocha test
+```
+$ npm test
+```
+
+##### Grunt
+```
+// If you have grunt ready, simple running "grunt" will install all the dependencies and run the Mocha test
+$ grunt
+```
+
 ##### Start your MongoDB server
 ```
 You have to start your own MongoDB server first otherwise it will not work properly.

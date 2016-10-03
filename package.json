@@ -1,9 +1,14 @@
 {
-  "name": "mini_ins",
+  "name": "MiniIns",
   "version": "0.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyrexin/mini_ins"
+  },
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "node ./node_modules/mocha/bin/mocha"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
@@ -22,8 +27,16 @@
     "multer": "~1.2.0"
   },
   "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-mocha-test": "^0.13.2",
+    "grunt-npm-install": "^0.3.1",
     "mocha": "^3.1.0",
     "should": "^11.1.0",
     "supertest": "^2.0.0"
-  }
+  },
+  "author": "<yc3171@columbia.edu>",
+  "contributors": [{
+    "name": "Jiaxin Su",
+    "email": "js4722@columbia.edu"
+  }]
 }
