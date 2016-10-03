@@ -24,7 +24,7 @@ $ npm install
 
 ##### Start your MongoDB server
 ```
-You have to start your own MongoDB server first unless it will not work properly.
+You have to start your own MongoDB server first otherwise it will not work properly.
 ```
 
 ##### Start server
