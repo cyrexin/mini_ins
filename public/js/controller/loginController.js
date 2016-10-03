@@ -10,6 +10,8 @@ angular.module('mini_ins')
                     $window.localStorage.currentUser = JSON.stringify(response.data.user);
                     $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
                     console.log($rootScope.currentUser);
+
+                    $location.path("/");
                 })
                 .catch(function(response) {
                     $scope.errorMessage = {};

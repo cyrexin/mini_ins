@@ -117,7 +117,7 @@ app.post('/auth/login', function(req, res) {
 app.post('/auth/reg', function(req, res) {
   User.findOne({ email: req.body.email }, function(err, existingUser) {
     if (existingUser) {
-      return res.status(409).send({ message: 'Email is already taken.' });
+      return res.status(409).send({ message: { email: 'Email is already taken.' } });
     }
 
     var user = new User({

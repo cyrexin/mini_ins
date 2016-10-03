@@ -2,7 +2,7 @@
  * Created by dyorex on 2016-10-01.
  */
 angular.module('mini_ins')
-    .controller('uploadController', ['Upload','$window',function(Upload, $window){
+    .controller('uploadController', function(Upload, $window, $location) {
         var vm = this;
         vm.submit = function(){ //function to call on form submit
             if (vm.upload_form.file.$valid && vm.file) { //check if from is valid
@@ -16,9 +16,10 @@ angular.module('mini_ins')
                 data:{file:file} //pass file as data, should be user ng-model
             }).then(function (resp) { //upload function returns a promise
                 if(resp.data.error_code === 0){ //validate success
-                    $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+                    // $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+                    $location.path("/");
                 } else {
-                    $window.alert('an error occured');
+                    // $window.alert('an error occured');
                     console.log(resp);
                 }
             }, function (resp) { //catch error
@@ -31,4 +32,4 @@ angular.module('mini_ins')
                 vm.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
             });
         };
-    }]);
+    });
