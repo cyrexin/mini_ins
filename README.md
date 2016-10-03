@@ -30,4 +30,5 @@ You have to start your own MongoDB server first unless it will not work properly
 ##### Start server
 ```
 $ npm start
+Then you should be able to use the app on http://localhost:3000
 ```
