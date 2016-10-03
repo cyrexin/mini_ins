@@ -29,7 +29,7 @@ $ npm test
 
 ##### Grunt
 ```
-// If you have grunt ready, simple running "grunt" will install all the dependencies and run the Mocha test
+// If you have grunt ready, simply type "grunt" will install all the dependencies and run the Mocha test
 $ grunt
 ```
 
