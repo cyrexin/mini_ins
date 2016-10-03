@@ -88,10 +88,6 @@ function isAuthenticated(req, res, next) {
   })
 }
 
-app.get('/protected', isAuthenticated, function(req, res) {
-  // Prints currently signed-in user object
-  console.log(req.user);
-});
 
 app.post('/auth/login', function(req, res) {
   User.findOne({ email: req.body.email }, '+password', function(err, user) {

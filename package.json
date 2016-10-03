@@ -20,5 +20,10 @@
     "jwt-simple": "~0.5.0",
     "request": "~2.75.0",
     "multer": "~1.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.1.0",
+    "should": "^11.1.0",
+    "supertest": "^2.0.0"
   }
 }
