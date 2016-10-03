@@ -6,10 +6,10 @@
                 <p>You don't have any photos yet. <a href="#/upload">Upload</a> now?</p>
             </div>
         </div>
-        <div class="row">
-            <div ng-repeat="photo in photos" class="col-lg-4 col-sm-3 col-xs-4">
+        <div class="row flex">
+            <div ng-repeat="photo in photos" class="col-md-3 col-sm-6 col-xs-12 card">
                 <a href="#/p/{{photo._id}}">
-                    <img ng-src="{{'/upload/' + photo.url}}" class="thumbnail img-responsive">
+                    <img ng-src="{{'/upload/' + photo.url}}" class="img-responsive">
                 </a>
             </div>
         </div>

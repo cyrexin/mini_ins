@@ -45,3 +45,12 @@ a {
     border-radius: 0;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, .04),0 1px 5px rgba(0, 0, 0, .1);
 }
+
+.card {
+  margin-bottom: 25px;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
