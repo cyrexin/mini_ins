@@ -13,7 +13,10 @@
 - Node.js
 - Express.js
 - AngularJS
+- Bootstrap
 - MongoDB
+- Mocha
+- Grunt
 
 ### Usage
 
